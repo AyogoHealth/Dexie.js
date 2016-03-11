@@ -3507,8 +3507,8 @@ export default function Dexie(dbName, options) {
     Dexie.dependencies = {
         // Required:
         // NOTE: The "_"-prefixed versions are for prioritizing IDB-shim on IOS8 before the native IDB in case the shim was included.
-        indexedDB: idbshim.shimIndexedDB || global.indexedDB || global.mozIndexedDB || global.webkitIndexedDB || global.msIndexedDB,
-        IDBKeyRange: idbshim.IDBKeyRange || global.IDBKeyRange || global.webkitIDBKeyRange,
+        indexedDB: global.indexedDB || global.mozIndexedDB || global.webkitIndexedDB || global.msIndexedDB || idbshim.shimIndexedDB ,
+        IDBKeyRange: global.IDBKeyRange || global.webkitIDBKeyRange || idbshim.IDBKeyRange,
         // Optional:
         Error: global.Error || String,
         SyntaxError: global.SyntaxError || String,
