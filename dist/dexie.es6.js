@@ -4,7 +4,7 @@
 *
 * By David Fahlander, david.fahlander@gmail.com
 *
-* Version 1.3.2, Wed Mar 09 2016
+* Version 1.3.2, Thu Mar 10 2016
 * www.dexie.com
 * Apache License Version 2.0, January 2004, http://www.apache.org/licenses/
 */
@@ -3672,8 +3672,8 @@ var idbshim = global.idbModules && global.idbModules.shimIndexedDB ? global.idbM
 Dexie.dependencies = {
     // Required:
     // NOTE: The "_"-prefixed versions are for prioritizing IDB-shim on IOS8 before the native IDB in case the shim was included.
-    indexedDB: idbshim.shimIndexedDB || global.indexedDB || global.mozIndexedDB || global.webkitIndexedDB || global.msIndexedDB,
-    IDBKeyRange: idbshim.IDBKeyRange || global.IDBKeyRange || global.webkitIDBKeyRange,
+    indexedDB: global.indexedDB || global.mozIndexedDB || global.webkitIndexedDB || global.msIndexedDB || idbshim.shimIndexedDB,
+    IDBKeyRange: global.IDBKeyRange || global.webkitIDBKeyRange || idbshim.IDBKeyRange,
     // Optional:
     Error: global.Error || String,
     SyntaxError: global.SyntaxError || String,
